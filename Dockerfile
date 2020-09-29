@@ -1,8 +1,10 @@
 FROM mcr.microsoft.com/dotnet/core/sdk:3.1
 
-RUN curl -sf -o resharper-cli.tar.gz -L "https://download-cf.jetbrains.com/resharper/ReSharperUltimate.2019.3.4/JetBrains.ReSharper.CommandLineTools.Unix.2019.3.4.tar.gz" \
+RUN apt-get update && apt-get -q install unzip -y
+
+RUN curl -sf -o resharper-cli.zip -L "https://download.jetbrains.com/resharper/dotUltimate.2020.2.3/JetBrains.ReSharper.CommandLineTools.2020.2.3.zip" \
     && mkdir -p /resharper \
-    && tar -xf resharper-cli.tar.gz -C /resharper \
-    && rm resharper-cli.tar.gz
+    && unzip -q resharper-cli.zip -C /resharper \
+    && rm resharper-cli.zip
 
 ENTRYPOINT [ "/resharper/inspectcode.sh" ]
