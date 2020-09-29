@@ -25,7 +25,7 @@ jobs:
      - name: Checkout
        uses: actions/checkout@v2
      - name: Inspect
-       uses: nbadal/inspectcode-action
+       uses: ron-legit/inspectcode-action
        with:
           solution: './MyProject.sln'
 ```
